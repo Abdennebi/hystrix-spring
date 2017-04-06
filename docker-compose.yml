@@ -5,7 +5,7 @@ sampleeureka:
    - "8761:8761"
 
 sampleconfig:
-  image: "sample-hystrix-config:1.0.1-SNAPSHOT"
+  image: "config-server:1.0.1-SNAPSHOT"
   hostname: sampleconfig
   links:
     - sampleeureka
@@ -17,7 +17,7 @@ sampleconfig:
     - "8888:8888"
 
 sampleservice:
-  image: sample-hystrix-service:1.0.1-SNAPSHOT
+  image: message-provider:1.0.1-SNAPSHOT
   hostname: sample-service
   links:
     - sampleeureka
@@ -31,7 +31,7 @@ sampleservice:
     - "8082:8080"
 
 sampleaggregate1:
-  image: sample-hystrix-aggregate:1.0.1-SNAPSHOT
+  image: message-consumer:1.0.1-SNAPSHOT
   hostname: sampleaggregate1
   links:
     - sampleeureka
@@ -44,7 +44,7 @@ sampleaggregate1:
      SPRING_PROFILES_ACTIVE: docker
 
 sampleaggregate2:
-  image: sample-hystrix-aggregate:1.0.1-SNAPSHOT
+  image: message-consumer:1.0.1-SNAPSHOT
   hostname: sampleaggregate2
   links:
     - sampleeureka
@@ -57,7 +57,7 @@ sampleaggregate2:
      SPRING_PROFILES_ACTIVE: docker
 
 samplegateway:
-  image: sample-hystrix-gateway:1.0.1-SNAPSHOT
+  image: zuul:1.0.1-SNAPSHOT
   hostname: samplegateway
   links:
     - sampleeureka
@@ -73,7 +73,7 @@ samplegateway:
     - "8080:8080"
 
 samplemonitor:
-  image: sample-hystrix-monitor:1.0.1-SNAPSHOT
+  image: turbine:1.0.1-SNAPSHOT
   hostname: samplemonitor
   links:
     - sampleeureka

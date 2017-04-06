@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 
 class FallbackScenariosTest extends Simulation {
 
-  val httpConf = http.baseURL("http://192.168.122.130:8080/sample-hystrix-aggregate")
+  val httpConf = http.baseURL("http://192.168.122.130:8080/message-consumer")
 
   val headers = Map("Accept" -> """application/json""")
 
